@@ -1,0 +1,144 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* AutoModern Dark Theme - Primary Colors */
+    --background: 210 11% 10%;
+    --foreground: 210 40% 98%;
+
+    --card: 210 11% 15%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 210 11% 15%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Electric Blue Accent (#00BFFF) */
+    --primary: 195 100% 50%;
+    --primary-foreground: 210 11% 10%;
+
+    --secondary: 210 11% 20%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 210 11% 20%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 195 100% 50%;
+    --accent-foreground: 210 11% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 210 11% 25%;
+    --input: 210 11% 20%;
+    --ring: 195 100% 50%;
+
+    --radius: 0.75rem;
+
+    /* AutoModern Specific Design Tokens */
+    --charcoal: 210 11% 10%;
+    --electric-blue: 195 100% 50%;
+    --electric-blue-glow: 195 100% 50%;
+    --surface: 210 11% 15%;
+    --surface-elevated: 210 11% 20%;
+    --text-primary: 210 40% 98%;
+    --text-secondary: 215 20.2% 65.1%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--electric-blue)), hsl(195 100% 40%));
+    --gradient-surface: linear-gradient(180deg, hsl(var(--surface)), hsl(var(--charcoal)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--charcoal)), hsl(210 11% 15%));
+    
+    /* Shadows & Effects */
+    --shadow-glow: 0 0 40px hsl(var(--electric-blue) / 0.3);
+    --shadow-card: 0 10px 30px -10px hsl(210 11% 5% / 0.8);
+    --shadow-elevated: 0 20px 50px -20px hsl(210 11% 5% / 0.9);
+    
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter;
+    background-attachment: fixed;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--surface));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary));
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary) / 0.8);
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.8s ease-out forwards;
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes glow {
+    from {
+      box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+    }
+    to {
+      box-shadow: 0 0 40px hsl(var(--primary) / 0.6);
+    }
+  }
+}
